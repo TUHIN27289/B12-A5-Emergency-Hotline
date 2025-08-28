@@ -1,0 +1,17 @@
+/* shared style */
+/* font inter */
+
+.inter-font {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+}
+
+/* Hind Madurai */
+.hind-madurai-font {
+    font-family: "Hind Madurai", sans-serif;
+}
+
+/* Li Ador Noirrit Font Family */
+.Li_Ador_Noirrit-Font {
+    font-family: "Li Ador Noirrit", sans-serif;
+}
