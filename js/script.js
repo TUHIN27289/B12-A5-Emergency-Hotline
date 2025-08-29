@@ -35,21 +35,78 @@ for (const hrt of hearts) {
 //   alert("Insufficient coins");
 //   return;
 // }
-document.getElementById("ne-call").addEventListener("click", function () {
-    console.log('ne call pressed')
-  const coinValue = takeInt("coin");
-  if (coinValue <= 20) {
-    alert("Insufficient coins");
-    return;
-  } else {
-    alert("avi service says:\ni am ok");
-    const upCoinValue = coinValue - 20;
-    document.getElementById("coin").innerText = upCoinValue;
-  }
-});
+
+
+
+// document.getElementById("ne-call").addEventListener("click", function () {
+//     console.log('ne call pressed')
+//   const coinValue = takeInt("coin");
+//   if (coinValue <= 20) {
+//     alert("Insufficient coins");
+//     return;
+//   } else {
+//     alert("emergency-service.netlify.app.says:");
+//     const upCoinValue = coinValue - 20;
+//     document.getElementById("coin").innerText = upCoinValue;
+//   }
+// });
 
 
 //   document.getElementById("ne-call").addEventListener("click", function() {
 //     alert("avi service says:\ni am ok");
 //   });
 
+function showCustomAlert(message) {
+  document.querySelector("#custom-alert p").innerHTML = message;
+  document.getElementById("custom-alert").classList.remove("hidden");
+}
+
+function closeAlert() {
+  document.getElementById("custom-alert").classList.add("hidden");
+}
+
+// Add event listener to ALL call buttons
+const callButtons = document.querySelectorAll('.call-btn');
+for(const calBtn of callButtons){
+    calBtn.addEventListener('click',function(){
+        const coinValue = takeInt("coin");
+        const card = this.closest("div.bg-white");
+         const title = card.querySelector("h1").innerText;   
+    const number = card.querySelectorAll("h1")[1].innerText;
+        if (coinValue <= 20) {
+            showCustomAlert(`Insufficient coins for: ${title}`);
+            return;
+          }
+          
+          const upCoinValue = coinValue - 20;
+          document.getElementById("coin").innerText = upCoinValue;
+          showCustomAlert(`<i class="fa-solid fa-phone mr-2 ml-4 text-red-700"></i>Calling  ${title} ${number}`);
+    
+
+    })
+}
+
+
+
+
+
+
+
+// callButtons.forEach(button => {
+//   button.addEventListener('click', function () {
+//     const coinValue = takeInt("coin");
+
+//     if (coinValue <= 20) {
+//     //   alert("Insufficient coins");
+//     showCustomAlert()
+//     console.log('hi');
+//       return;
+//     }
+
+//     // Show custom alert
+//     showCustomAlert();
+//     // Deduct coins
+//     const updatedCoins = coinValue - 20;
+//     document.getElementById("coin").innerText = updatedCoins;
+//   });
+// });
