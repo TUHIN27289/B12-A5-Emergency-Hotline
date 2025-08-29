@@ -132,25 +132,7 @@ for (const cop of cops) {
   });
 }
 
-// callButtons.forEach(button => {
-//   button.addEventListener('click', function () {
-//     const coinValue = takeInt("coin");
-
-//     if (coinValue <= 20) {
-//     //   alert("Insufficient coins");
-//     showCustomAlert()
-//     console.log('hi');
-//       return;
-//     }
-
-//     // Show custom alert
-//     showCustomAlert();
-//     // Deduct coins
-//     const updatedCoins = coinValue - 20;
-//     document.getElementById("coin").innerText = updatedCoins;
-//   });
-// });
-// Select all copy buttons
+// copy button
 const copyButtons = document.querySelectorAll(".copy-btn");
 
 copyButtons.forEach(button => {
@@ -159,23 +141,19 @@ copyButtons.forEach(button => {
     const clickedButton = event.currentTarget;
     const numberElem = card.querySelector("h1.roboto-font.font-bold.text-4xl.mt-5");
     const hotlineNumber = numberElem.innerText;
-    // Use Clipboard API to copy the number
     navigator.clipboard.writeText(hotlineNumber).then(() => {
-      // Show alert on success
       showCustomAlert(`Copied hotline number: ${hotlineNumber}`)
-      // alert(`Copied hotline number: ${hotlineNumber}`);
-
-      // Increase the copy count
       const copyCountElem = card.querySelector(".copy-count");
-      if (copyCountElem) {
-        // Extract current count from text, e.g. "Copied: 3"
-        const currentCount = parseInt(copyCountElem.innerText.replace(/[^\d]/g, "")) || 0;
-        const newCount = currentCount + 1;
-        copyCountElem.innerText = `Copied: ${newCount}`;
-      }
-    }).catch(err => {
-      alert("Failed to copy the hotline number.");
-      console.error("Clipboard write failed:", err);
-    });
+      
+    })
   });
 });
+
+
+// 
+document.getElementById("clear-btn").addEventListener('click',function(){
+  transactionData.length = 0; 
+  document.getElementById("transaction-container").innerHTML = ""; 
+})
+
+ 
