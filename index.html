@@ -52,11 +52,11 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body>
+  <body class="md:p-0 p-2">
     <!-- bg-[#f8f9fa] -->
     <!-- header section -->
-    <header class="bg-[white] max-w-[1400px] h-[50px] mx-auto">
-      <div class="flex justify-between items-center mt-4 mb-4">
+    <header class="bg-[white] max-w-[1400px] h-[50px] mx-auto  ">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center py-4 gap-y-6 md:gap-y-0">
         <div class="flex justify-center items-center gap-x-2 gap-y-0">
           <img class="w-12 h-12" src="./assets/logo.png" />
           <h1
@@ -66,7 +66,7 @@
             Service
           </h1>
         </div>
-        <div class="flex justify-center items-center gap-x-4">
+        <div class="flex justify-center items-center md:gap-x-4 gap-x-1">
           <div
             class="flex justify-center items-center w-32 h-14 bg-[#41FF6B1A] rounded-full"
           >
@@ -90,11 +90,11 @@
     </header>
     <!-- banner section -->
     <section
-      class="bg-[linear-gradient(90deg,_#013223,_#006747_50%,_#013223_100%)] mt-6"
+      class="bg-[linear-gradient(90deg,_#013223,_#006747_50%,_#013223_100%)] mt-6 md:rounded-none rounded-lg "
     >
-      <div class="flex items-center justify-center mx-auto p-4">
-        <div class="mx-auto flex flex-col justify-center items-center">
-          <img class="w-20 h-20 p-2" src="./assets/logo-dark.png" />
+      <div class="grid items-center justify-center mx-auto p-4 gap-y-10 ] ">
+        <div class="mx-auto flex flex-col  justify-center items-center   ">
+          <img class="w-20 h-20 p-2 mt-16 md:mt-0" src="./assets/logo-dark.png" />
           <h1 class="text-white hind-madurai-font font-bold text-3xl">
             Emergency Service Directory
           </h1>
@@ -107,9 +107,9 @@
     </section>
     <!-- service section -->
     <section class="bg-[#41FF6B1A]">
-      <div class="w-[1420px] p-4 mx-auto">
-        <div class="flex mt-8 mb-14 gap-4">
-          <div class="grid grid-cols-3 gap-4 w-[1100px]">
+      <div class="md:w-[1420px] p-4 mx-auto">
+        <div class=" flex md:flex-row flex-col mt-8 mb-14 gap-4">
+          <div class="grid md:grid-cols-3 grid-cols-1 gap-4 md:w-[1100px] w-[400px]">
             <!-- 1 -->
             <div
               class="bg-white p-8 rounded-xl shadow-[0px_2px_3px_rgba(0,0,0,0.15)] cc b"
@@ -553,7 +553,7 @@
               </div>
             </div>
           </div>
-          <div class="w-80 rounded-2xl bg-white p-4">
+          <div class="md:w-80 w-[400px] rounded-2xl bg-white p-4">
             <div class="flex justify-between">
               <div class=" flex justify-center items-center gap-x-2">
                 <i class="fa-regular fa-clock"></i>
