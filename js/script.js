@@ -5,7 +5,6 @@ function takeInt(id) {
   return recValueInt;
 }
 
-
 // heart
 
 // document.getElementById('heart').addEventListener('click',function(){
@@ -21,7 +20,7 @@ function takeInt(id) {
 const hearts = document.querySelectorAll(".h1");
 for (const hrt of hearts) {
   hrt.addEventListener("click", function () {
-    const id = hrt.getAttribute("target");
+    // const id = hrt.getAttribute("target");
     const heartValue = document.getElementById("heart_up").innerText;
     const val = takeInt("heart_up");
     const upHeartValueInt = val + 1;
@@ -36,8 +35,6 @@ for (const hrt of hearts) {
 //   return;
 // }
 
-
-
 // document.getElementById("ne-call").addEventListener("click", function () {
 //     console.log('ne call pressed')
 //   const coinValue = takeInt("coin");
@@ -50,7 +47,6 @@ for (const hrt of hearts) {
 //     document.getElementById("coin").innerText = upCoinValue;
 //   }
 // });
-
 
 //   document.getElementById("ne-call").addEventListener("click", function() {
 //     alert("avi service says:\ni am ok");
@@ -65,32 +61,76 @@ function closeAlert() {
   document.getElementById("custom-alert").classList.add("hidden");
 }
 
+const transactionData = [];
 // Add event listener to ALL call buttons
-const callButtons = document.querySelectorAll('.call-btn');
-for(const calBtn of callButtons){
-    calBtn.addEventListener('click',function(){
-        const coinValue = takeInt("coin");
-        const card = this.closest("div.bg-white");
-         const title = card.querySelector("h1").innerText;   
-    const number = card.querySelectorAll("h1")[1].innerText;
-        if (coinValue <= 20) {
-            showCustomAlert(`Insufficient coins for: ${title}`);
-            return;
-          }
-          
-          const upCoinValue = coinValue - 20;
-          document.getElementById("coin").innerText = upCoinValue;
-          showCustomAlert(`<i class="fa-solid fa-phone mr-2 ml-4 text-red-700"></i>Calling  ${title} ${number}`);
-    
+const callButtons = document.querySelectorAll(".call-btn");
+for (const calBtn of callButtons) {
+  calBtn.addEventListener("click", function () {
+    const coinValue = takeInt("coin");
 
-    })
+    const card = this.closest("div.bg-white");
+    const title = card.querySelector("h1").innerText;
+    const number = card.querySelectorAll("h1")[1].innerText;
+    if (coinValue <= 20) {
+      showCustomAlert(`Insufficient coins for: ${title}`);
+      return;
+    }
+
+    const upCoinValue = coinValue - 20;
+    document.getElementById("coin").innerText = upCoinValue;
+
+    const data = {
+      name: title,
+      serviceNumber: number,
+      date: new Date().toLocaleTimeString(),
+    };
+
+    // Push it to transactionData
+    transactionData.push(data);
+    console.log(transactionData);
+    const transactionContainer = document.getElementById(
+      "transaction-container"
+    );
+    const div = document.createElement("div");
+    for (const i of transactionData) {
+      div.innerHTML = `
+      <div class="flex justify-between items-center bg-[#F4F5F7] h-16 p-3 rounded-2xl mt-3">
+            <div class="">
+              <div class="flex justify-center items-center gap-x-3">
+                
+                <div>
+                  <h1 class="inter-font text-sm font-medium text-[#080808] ">${i.name}</h1>
+                  <h1 class="hind-madurai-font  text-sm font-normal text-[#080808B3] ">${i.serviceNumber}</h1>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="">
+              <p class="outfit-font text-xs font-normal text-[#080808B3] mt-0.5">${i.date}</p>
+            </div>
+          </div>
+      
+      `;
+    }
+    transactionContainer.appendChild(div);
+
+    showCustomAlert(
+      `<i class="fa-solid fa-phone mr-2 ml-4 text-red-700"></i>Calling  ${title} ${number}`
+    );
+  });
 }
 
+// copy section
+const cops = document.querySelectorAll(".c1");
+for (const cop of cops) {
+  cop.addEventListener("click", function () {
+      const val = takeInt("copy_up");
+    const upCopyValueInt = val + 1;
+    document.getElementById("copy_up").innerText = upCopyValueInt;
 
-
-
-
-
+    
+  });
+}
 
 // callButtons.forEach(button => {
 //   button.addEventListener('click', function () {
@@ -110,3 +150,32 @@ for(const calBtn of callButtons){
 //     document.getElementById("coin").innerText = updatedCoins;
 //   });
 // });
+// Select all copy buttons
+const copyButtons = document.querySelectorAll(".copy-btn");
+
+copyButtons.forEach(button => {
+  button.addEventListener("click", function(event) {
+    const card = button.closest(".b");
+    const clickedButton = event.currentTarget;
+    const numberElem = card.querySelector("h1.roboto-font.font-bold.text-4xl.mt-5");
+    const hotlineNumber = numberElem.innerText;
+    // Use Clipboard API to copy the number
+    navigator.clipboard.writeText(hotlineNumber).then(() => {
+      // Show alert on success
+      showCustomAlert(`Copied hotline number: ${hotlineNumber}`)
+      // alert(`Copied hotline number: ${hotlineNumber}`);
+
+      // Increase the copy count
+      const copyCountElem = card.querySelector(".copy-count");
+      if (copyCountElem) {
+        // Extract current count from text, e.g. "Copied: 3"
+        const currentCount = parseInt(copyCountElem.innerText.replace(/[^\d]/g, "")) || 0;
+        const newCount = currentCount + 1;
+        copyCountElem.innerText = `Copied: ${newCount}`;
+      }
+    }).catch(err => {
+      alert("Failed to copy the hotline number.");
+      console.error("Clipboard write failed:", err);
+    });
+  });
+});
