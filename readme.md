@@ -116,6 +116,15 @@ You have to create a `Readme.md` file. and write down following questions. Dont 
 4. What is **Event Delegation** in JavaScript? Why is it useful?
 5. What is the difference between **preventDefault() and stopPropagation()** methods?
 
+1.getElementById selects one element by ID, getElementsByClassName selects all with that class (HTMLCollection), while querySelector selects the first match and querySelectorAll selects all (NodeList).
+
+2.Use document.createElement("div"), then parent.appendChild(newElement) to insert it.
+
+3.Event Bubbling means events start from the target element and bubble up through its ancestors.
+
+4.Event Delegation uses a parent element to handle events of child elements via bubbling—reduces memory usage.
+
+5.preventDefault() stops default browser behavior, while stopPropagation() stops the event from bubbling further.
 ---
 
 ## 🧪 Challenges Part (10 Marks)
