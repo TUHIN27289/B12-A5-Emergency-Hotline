@@ -30,7 +30,7 @@ function closeAlert() {
 }
 
 const transactionData = [];
-// Add event listener to ALL call buttons
+
 const callButtons = document.querySelectorAll(".call-btn");
 for (const calBtn of callButtons) {
   calBtn.addEventListener("click", function () {
@@ -52,8 +52,6 @@ for (const calBtn of callButtons) {
       serviceNumber: number,
       date: new Date().toLocaleTimeString(),
     };
-
-    // Push it to transactionData
     transactionData.push(data);
     console.log(transactionData);
     const transactionContainer = document.getElementById(
@@ -118,7 +116,7 @@ copyButtons.forEach(button => {
 });
 
 
-// 
+// clear
 document.getElementById("clear-btn").addEventListener('click',function(){
   transactionData.length = 0; 
   document.getElementById("transaction-container").innerHTML = ""; 
