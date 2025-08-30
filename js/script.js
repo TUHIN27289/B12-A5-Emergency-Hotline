@@ -104,6 +104,16 @@ for (const cop of cops) {
 // copy button 
 const copyButtons = document.querySelectorAll(".copy-btn");
 
+// hover copy button
+for(const copBtn of copyButtons){
+  copBtn.addEventListener("mouseenter",function(){
+    this.style.backgroundColor="lightgreen";
+    copBtn.addEventListener("mouseleave", function () {
+    this.style.backgroundColor = ""; 
+  });
+  })
+}
+
 for (const button of copyButtons) {
   button.addEventListener("click", function (e) {
     const card = button.closest(".b");
