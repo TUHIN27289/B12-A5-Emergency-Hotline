@@ -1,3 +1,5 @@
+
+// integer conversion function
 function takeInt(id) {
   const recValue = document.getElementById(id);
   const recValueString = recValue.innerText;
@@ -5,12 +7,11 @@ function takeInt(id) {
   return recValueInt;
 }
 
-
+// hear update
 
 const hearts = document.querySelectorAll(".h1");
 for (const hrt of hearts) {
   hrt.addEventListener("click", function () {
-    // const id = hrt.getAttribute("target");
     const heartValue = document.getElementById("heart_up").innerText;
     const val = takeInt("heart_up");
     const upHeartValueInt = val + 1;
@@ -19,7 +20,7 @@ for (const hrt of hearts) {
 }
 
 
-
+// custom alert message 
 function showCustomAlert(message) {
   document.querySelector("#custom-alert p").innerHTML = message;
   document.getElementById("custom-alert").classList.remove("hidden");
@@ -28,6 +29,8 @@ function showCustomAlert(message) {
 function closeAlert() {
   document.getElementById("custom-alert").classList.add("hidden");
 }
+
+// call button and call history
 
 const transactionData = [];
 
@@ -39,7 +42,7 @@ for (const calBtn of callButtons) {
     const card = this.closest("div.bg-white");
     const title = card.querySelector("h1").innerText;
     const number = card.querySelectorAll("h1")[1].innerText;
-    if (coinValue <= 20) {
+    if (coinValue < 20) {
       showCustomAlert(`Insufficient coins for: ${title}`);
       return;
     }
@@ -98,25 +101,27 @@ for (const cop of cops) {
   });
 }
 
-// copy button
+// copy button 
 const copyButtons = document.querySelectorAll(".copy-btn");
 
-copyButtons.forEach(button => {
-  button.addEventListener("click", function(event) {
+for (const button of copyButtons) {
+  button.addEventListener("click", function (e) {
     const card = button.closest(".b");
-    const clickedButton = event.currentTarget;
+    const clickedButton = e.currentTarget; // ✅ use e instead of event
     const numberElem = card.querySelector("h1.roboto-font.font-bold.text-4xl.mt-5");
     const hotlineNumber = numberElem.innerText;
+
     navigator.clipboard.writeText(hotlineNumber).then(() => {
-      showCustomAlert(`Copied hotline number: ${hotlineNumber}`)
+      showCustomAlert(`Copied hotline number: ${hotlineNumber}`);
       const copyCountElem = card.querySelector(".copy-count");
-      
-    })
+    });
   });
-});
+}
 
 
-// clear
+
+
+// clear button
 document.getElementById("clear-btn").addEventListener('click',function(){
   transactionData.length = 0; 
   document.getElementById("transaction-container").innerHTML = ""; 
