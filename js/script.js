@@ -11,7 +11,8 @@ function takeInt(id) {
 
 const hearts = document.querySelectorAll(".h1");
 for (const hrt of hearts) {
-  hrt.addEventListener("click", function () {
+  hrt.addEventListener("click", function (e) {
+    e.defaultPrevented();
     const heartValue = document.getElementById("heart_up").innerText;
     const val = takeInt("heart_up");
     const upHeartValueInt = val + 1;
@@ -36,7 +37,8 @@ const transactionData = [];
 
 const callButtons = document.querySelectorAll(".call-btn");
 for (const calBtn of callButtons) {
-  calBtn.addEventListener("click", function () {
+  calBtn.addEventListener("click", function (e) {
+    e.preventDefault();
     const coinValue = takeInt("coin");
 
     const card = this.closest("div.bg-white");
@@ -56,7 +58,7 @@ for (const calBtn of callButtons) {
       date: new Date().toLocaleTimeString(),
     };
     transactionData.push(data);
-    console.log(transactionData);
+    // console.log(transactionData);
     const transactionContainer = document.getElementById(
       "transaction-container"
     );
@@ -92,7 +94,8 @@ for (const calBtn of callButtons) {
 // copy section
 const cops = document.querySelectorAll(".c1");
 for (const cop of cops) {
-  cop.addEventListener("click", function () {
+  cop.addEventListener("click", function (e) {
+    e.defaultPrevented();
       const val = takeInt("copy_up");
     const upCopyValueInt = val + 1;
     document.getElementById("copy_up").innerText = upCopyValueInt;
@@ -106,7 +109,8 @@ const copyButtons = document.querySelectorAll(".copy-btn");
 
 // hover copy button
 for(const copBtn of copyButtons){
-  copBtn.addEventListener("mouseenter",function(){
+  copBtn.addEventListener("mouseenter",function(e){
+    e.preventDefault();
     this.style.backgroundColor="lightgreen";
     copBtn.addEventListener("mouseleave", function () {
     this.style.backgroundColor = ""; 
@@ -116,6 +120,7 @@ for(const copBtn of copyButtons){
 
 for (const button of copyButtons) {
   button.addEventListener("click", function (e) {
+    e.preventDefault();
     const card = button.closest(".b");
     const clickedButton = e.currentTarget; // ✅ use e instead of event
     const numberElem = card.querySelector("h1.roboto-font.font-bold.text-4xl.mt-5");
@@ -132,7 +137,8 @@ for (const button of copyButtons) {
 
 
 // clear button
-document.getElementById("clear-btn").addEventListener('click',function(){
+document.getElementById("clear-btn").addEventListener('click',function(e){
+  e.preventDefault();
   transactionData.length = 0; 
   document.getElementById("transaction-container").innerHTML = ""; 
 })
