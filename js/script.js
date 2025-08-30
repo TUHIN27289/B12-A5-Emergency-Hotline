@@ -12,7 +12,7 @@ function takeInt(id) {
 const hearts = document.querySelectorAll(".h1");
 for (const hrt of hearts) {
   hrt.addEventListener("click", function (e) {
-    e.defaultPrevented();
+    e.preventDefault();
     const heartValue = document.getElementById("heart_up").innerText;
     const val = takeInt("heart_up");
     const upHeartValueInt = val + 1;
@@ -95,7 +95,7 @@ for (const calBtn of callButtons) {
 const cops = document.querySelectorAll(".c1");
 for (const cop of cops) {
   cop.addEventListener("click", function (e) {
-    e.defaultPrevented();
+    e.preventDefault();
       const val = takeInt("copy_up");
     const upCopyValueInt = val + 1;
     document.getElementById("copy_up").innerText = upCopyValueInt;
