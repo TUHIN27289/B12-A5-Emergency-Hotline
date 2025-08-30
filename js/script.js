@@ -122,7 +122,7 @@ for (const button of copyButtons) {
   button.addEventListener("click", function (e) {
     e.preventDefault();
     const card = button.closest(".b");
-    const clickedButton = e.currentTarget; // ✅ use e instead of event
+    const clickedButton = e.currentTarget; 
     const numberElem = card.querySelector("h1.roboto-font.font-bold.text-4xl.mt-5");
     const hotlineNumber = numberElem.innerText;
 
